@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="timeline_title">Лента</string>
+    <string name="timeline_export_json">Скачать отчет (JSON)</string>
+    <string name="timeline_empty">Событий пока нет. Подключитесь к Wi-Fi, чтобы получить анализ.</string>
+    <string name="timeline_severity_info">Инфо</string>
+    <string name="timeline_severity_warn">Внимание</string>
+    <string name="timeline_severity_high">Высокий</string>
+    <string name="timeline_severity_critical">Критический</string>
+    <string name="timeline_report_error">Не удалось сформировать отчет.</string>
+</resources>

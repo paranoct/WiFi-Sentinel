@@ -1,0 +1,7 @@
+com.wifisentinel.core.risk
+string risk_action_check_ssid
+string risk_action_disconnect_high
+string risk_action_no_passwords
+string risk_action_use_secure
+string risk_summary_empty
+string risk_summary_found

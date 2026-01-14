@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dashboard_permissions_title">Разрешения для Wi-Fi</string>
+    <string name="dashboard_permissions_body">Для анализа сети нужны разрешения на местоположение и доступ к информации о Wi-Fi.</string>
+    <string name="dashboard_permissions_button">Открыть настройки</string>
+    <string name="dashboard_demo_title">Демо режим</string>
+    <string name="dashboard_demo_description">Показаны данные из загруженного отчёта. Фоновый мониторинг приостановлен.</string>
+    <string name="dashboard_demo_exit">Выйти из демо</string>
+
+    <string name="dashboard_current_network_title">Текущая сеть</string>
+    <string name="dashboard_ssid_format">SSID: %1$s</string>
+    <string name="dashboard_security_format">Защита: %1$s</string>
+    <string name="dashboard_signal_format">Сигнал: %1$s</string>
+    <string name="dashboard_show_details">Показать детали</string>
+    <string name="dashboard_ssid_missing">SSID не определяется. Возможно, вы подключены к скрытой сети или данные ещё не обновились.</string>
+
+    <string name="dashboard_risk_title">Риск</string>
+    <string name="dashboard_risk_scanning">Риск: идёт сканирование…</string>
+    <string name="dashboard_risk_value_format">Риск: %1$d (%2$s)</string>
+    <string name="dashboard_risk_calculating">Идёт подсчёт риска…</string>
+
+    <string name="dashboard_tab_risks">Риски</string>
+    <string name="dashboard_tab_settings">Настройки</string>
+    <string name="dashboard_risk_actions_empty">Пока нет рекомендаций по рискам.</string>
+    <string name="dashboard_router_need_scan">Сделайте скан, чтобы получить рекомендации по настройкам роутера.</string>
+    <string name="dashboard_router_scan_count_format">Сетей в эфире: 2,4 ГГц — %1$d, 5 ГГц — %2$d</string>
+    <string name="dashboard_router_current_settings">Текущие настройки</string>
+    <string name="dashboard_router_recommended_settings">Рекомендуемые настройки</string>
+
+    <string name="dashboard_scan_button">Сделать скан</string>
+    <string name="dashboard_scan_button_scanning">Сканирую…</string>
+    <string name="dashboard_last_scan_format">Последний скан: %1$s</string>
+    <string name="dashboard_copy_threats">Копировать угрозы</string>
+    <string name="dashboard_copy_threats_toast">Угрозы скопированы</string>
+    <string name="dashboard_add_trusted">Добавить в доверенные</string>
+
+    <string name="dashboard_findings_title">Находки</string>
+    <string name="dashboard_findings_empty">Срабатываний нет. Подключитесь к Wi-Fi и выполните скан.</string>
+    <string name="dashboard_actions_title">Что сделать сейчас</string>
+
+    <string name="action_wifi_settings">Настройки Wi-Fi</string>
+    <string name="action_network_details">Подробнее</string>
+    <string name="action_copy_evidence">Скопировать доказательства</string>
+    <string name="action_share_report">Поделиться отчётом</string>
+    <string name="action_how_disable_autojoin">Как отключить автоподключение</string>
+
+    <string name="dashboard_copy_evidence_toast">Доказательства скопированы</string>
+
+    <string name="dashboard_autojoin_title">Как отключить автоподключение</string>
+    <string name="dashboard_autojoin_message">Откройте настройки Wi-Fi, выберите нужную сеть и отключите автоподключение.</string>
+    <string name="dashboard_autojoin_open_settings">Открыть настройки Wi-Fi</string>
+    <string name="dashboard_autojoin_close">Закрыть</string>
+
+    <string name="label_security_nutrition">Этикетка безопасности</string>
+    <string name="label_security_type">Защита</string>
+    <string name="label_portal">Портал</string>
+    <string name="label_changes">Изменения</string>
+    <string name="label_dns">DNS</string>
+    <string name="label_mesh">Роуминг (Mesh)</string>
+    <string name="value_yes">есть</string>
+    <string name="value_no">нет</string>
+    <string name="value_changes_none">не было</string>
+    <string name="value_changes_present_format">были (%1$s)</string>
+    <string name="value_not_available">нет данных</string>
+    <string name="value_unknown">неизвестно</string>
+    <string name="value_dns_normal">обычный</string>
+    <string name="value_dns_suspicious">подозрительный</string>
+    <string name="value_dns_unavailable">не удалось проверить</string>
+    <string name="value_mesh_enabled">включён</string>
+    <string name="value_mesh_disabled">выключен</string>
+    <string name="change_bssid_label">BSSID</string>
+    <string name="change_dns_label">DNS</string>
+    <string name="change_security_label">защита</string>
+
+    <string name="severity_info">Инфо</string>
+    <string name="severity_warn">Внимание</string>
+    <string name="severity_high">Высокий</string>
+    <string name="severity_critical">Критический</string>
+
+    <string name="risk_level_low">низкий</string>
+    <string name="risk_level_medium">средний</string>
+    <string name="risk_level_high">высокий</string>
+    <string name="risk_level_critical">критический</string>
+
+    <string name="security_open">Открытая</string>
+    <string name="security_wep">WEP</string>
+    <string name="security_wpa2">WPA2</string>
+    <string name="security_wpa3">WPA3</string>
+    <string name="security_wpa2_wpa3">WPA2/WPA3</string>
+    <string name="security_unknown">Неизвестно</string>
+
+    <string name="signal_no_data">нет данных</string>
+    <string name="signal_excellent">отличный</string>
+    <string name="signal_good">хороший</string>
+    <string name="signal_medium">средний</string>
+    <string name="signal_weak">слабый</string>
+    <string name="signal_very_weak">очень слабый</string>
+
+    <string name="threats_header">Угрозы по сети</string>
+    <string name="threats_header_with_ssid">Угрозы по сети «%1$s»</string>
+    <string name="threats_header_with_bssid">Угрозы по сети (%1$s)</string>
+    <string name="risk_line_format">Риск: %1$d (%2$s)</string>
+
+    <string name="evidence_title_format">Нахождение: %1$s</string>
+    <string name="evidence_severity_format">Серьёзность: %1$s</string>
+    <string name="evidence_ssid_format">SSID: %1$s</string>
+    <string name="evidence_bssid_format">BSSID: %1$s</string>
+    <string name="evidence_security_format">Защита: %1$s</string>
+    <string name="evidence_dns_format">DNS: %1$s</string>
+    <string name="evidence_time_format">Время: %1$s</string>
+    <string name="evidence_details_format">Детали: %1$s</string>
+    <string name="evidence_ssid_hidden">Скрытая</string>
+
+    <string name="router_section_24_title">Wi-Fi 2,4 ГГц</string>
+    <string name="router_section_5_title">Wi-Fi 5 ГГц</string>
+    <string name="router_section_current_title">Текущие настройки (%1$s)</string>
+    <string name="router_setting_channel">Канал</string>
+    <string name="router_setting_mode">Режим</string>
+    <string name="router_setting_bandwidth">Полоса пропускания</string>
+    <string name="router_setting_guard_interval_11n">Защитный интервал 11n</string>
+    <string name="router_setting_guard_interval_11ax">Защитный интервал 11ax</string>
+    <string name="router_setting_guard_interval">Защитный интервал</string>
+    <string name="router_setting_hidden_ssid">Скрытая сеть Wi-Fi</string>
+    <string name="router_setting_wmm">WMM</string>
+    <string name="router_value_auto_channel">Авто (%1$d)</string>
+    <string name="router_value_no_data">Нет данных</string>
+    <string name="router_value_short">Короткий</string>
+    <string name="router_value_on">Включено</string>
+    <string name="router_value_off">Отключено</string>
+    <string name="router_value_unknown">Неизвестно</string>
+    <string name="router_value_bandwidth_mhz">%1$d МГц</string>
+    <string name="router_value_bandwidth_20">20 МГц</string>
+    <string name="router_value_bandwidth_40">40 МГц</string>
+    <string name="router_value_bandwidth_80">80 МГц</string>
+    <string name="router_value_bandwidth_80p80">80+80 МГц</string>
+    <string name="router_value_bandwidth_160">160 МГц</string>
+    <string name="router_value_mode_24">802.11b/g/n</string>
+    <string name="router_value_mode_5">802.11a/n/ac/ax</string>
+    <string name="router_value_standard_11ac">802.11ac</string>
+    <string name="router_value_standard_11ax">802.11ax</string>
+    <string name="router_value_standard_11n">802.11n</string>
+    <string name="router_value_standard_11ad">802.11ad</string>
+    <string name="router_value_standard_11be">802.11be</string>
+    <string name="router_value_standard_legacy">802.11a/b/g</string>
+    <string name="router_band_2g4">2,4 ГГц</string>
+    <string name="router_band_5g">5 ГГц</string>
+    <string name="router_band_6g">6 ГГц</string>
+    <string name="dashboard_demo_load_scan">Загрузить скан</string>
+</resources>

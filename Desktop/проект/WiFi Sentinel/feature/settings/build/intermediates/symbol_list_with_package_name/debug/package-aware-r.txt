@@ -1,0 +1,25 @@
+com.wifisentinel.feature.settings
+string replay_demo_active
+string replay_demo_description
+string replay_demo_exit
+string replay_load_file
+string replay_mask_toggle
+string replay_save_current
+string replay_subtitle
+string replay_title
+string settings_always_on_description
+string settings_always_on_title
+string settings_dns_check_description
+string settings_dns_check_title
+string settings_doh_selected_format
+string settings_doh_title
+string settings_mask_sensitive_description
+string settings_mask_sensitive_title
+string settings_notifications_description
+string settings_notifications_title
+string settings_scan_interval_hours_format
+string settings_scan_interval_title
+string settings_theme_dark
+string settings_theme_light
+string settings_theme_title
+string settings_title

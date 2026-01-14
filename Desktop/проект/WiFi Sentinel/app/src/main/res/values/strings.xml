@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">WiFi Sentinel</string>
+
+    <string name="nav_dashboard">Дашборд</string>
+    <string name="nav_trusted">Доверенные</string>
+    <string name="nav_timeline">Лента</string>
+    <string name="nav_settings">Настройки</string>
+
+    <string name="share_report_title">Поделиться отчётом</string>
+    <string name="report_export_no_data">Нет данных для отчёта.</string>
+    <string name="report_export_error">Не удалось сформировать отчёт.</string>
+
+    <string name="network_hidden">Скрытая сеть</string>
+    <string name="network_unnamed">Безымянная сеть</string>
+    <string name="value_separator"> · </string>
+
+    <string name="notif_action_forget_network">Забыть сеть</string>
+    <string name="notif_foreground_title">WiFi Sentinel работает</string>
+    <string name="notif_foreground_text">Фоновая защита активна</string>
+    <string name="notif_channel_alerts_name">Предупреждения Wi-Fi</string>
+    <string name="notif_channel_alerts_desc">Опасные события и риски для Wi-Fi сети.</string>
+    <string name="notif_channel_reports_name">Отчёты по Wi-Fi</string>
+    <string name="notif_channel_reports_desc">Краткие отчёты о подключениях к Wi-Fi.</string>
+    <string name="replay_export_error">Не удалось сохранить данные для демонстрации.</string>
+    <string name="replay_import_success">Данные загружены. Результаты доступны на дашборде.</string>
+    <string name="replay_import_error">Не удалось загрузить файл демонстрации.</string>
+    <string name="replay_demo_exit">Демо режим выключен.</string>
+    <string name="notif_channel_foreground_name">Фоновая защита Wi-Fi</string>
+    <string name="notif_channel_foreground_desc">Постоянное уведомление для фонового мониторинга Wi-Fi.</string>
+    <string name="notif_alert_title">Опасность Wi-Fi</string>
+    <string name="notif_report_title">Отчёт по сети Wi-Fi</string>
+    <string name="notif_network_report_title">Отчёт по сети Wi-Fi</string>
+
+    <string name="event_connected_title">Подключение к Wi-Fi</string>
+    <string name="event_connected_detail">Вы подключились к сети \"%1$s\".</string>
+    <string name="event_bssid_change_title">Смена точки доступа</string>
+    <string name="event_bssid_change_detail">Сеть \"%1$s\" сменила точку доступа. Если это не ожидаемо, проверьте безопасность сети.</string>
+    <string name="event_security_change_title">Изменилась защита сети</string>
+    <string name="event_security_change_detail">Тип защиты сети \"%1$s\" теперь %2$s.</string>
+    <string name="event_captive_portal_title">Сеть требует авторизации</string>
+    <string name="event_captive_portal_detail">Сеть \"%1$s\" требует вход через веб-страницу. Будьте внимательны и проверяйте адрес страницы.</string>
+
+    <string name="security_open">Открытая</string>
+    <string name="security_wep">WEP</string>
+    <string name="security_wpa2">WPA2</string>
+    <string name="security_wpa3">WPA3</string>
+    <string name="security_wpa2_wpa3">WPA2/WPA3</string>
+    <string name="security_unknown">Неизвестно</string>
+
+    <string name="safety_risk_high">Риск: опасно</string>
+    <string name="safety_risk_warn">Риск: есть риски</string>
+    <string name="safety_risk_low">Риск: низкий</string>
+
+    <string name="signal_no_data">сигнал: нет данных</string>
+    <string name="signal_excellent">сигнал: отличный</string>
+    <string name="signal_good">сигнал: хороший</string>
+    <string name="signal_medium">сигнал: средний</string>
+    <string name="signal_weak">сигнал: слабый</string>
+    <string name="signal_very_weak">сигнал: очень слабый</string>
+
+    <string name="finding_detail_captive_portal">Сеть требует веб-аутентификации перед полным доступом. Не вводите важные пароли до проверки адреса страницы.</string>
+    <string name="finding_detail_weak_security">Сеть использует слабую защиту. Лучше перейти на более безопасную сеть.</string>
+    <string name="finding_detail_dns_integrity">Ответы DNS выглядят необычно. Проверьте настройки сети или используйте надежный DNS.</string>
+    <string name="finding_detail_gateway_anomaly">Шлюз изменился. Проверьте, что это ожидаемое устройство в вашей сети.</string>
+    <string name="finding_detail_disconnect_anomaly">Частые переподключения к сети. Если это не ожидаемо, проверьте стабильность Wi-Fi.</string>
+
+    <string name="toast_network_forgot">Сеть забыта.</string>
+    <string name="toast_forget_open_settings">Откройте сеть в настройках Wi-Fi и нажмите «Забыть».</string>
+</resources>

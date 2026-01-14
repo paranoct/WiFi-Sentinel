@@ -1,0 +1,6 @@
+[
+    {
+        "merged": "com.wifisentinel.app-merged_res-78:/xml_file_paths.xml.flat",
+        "source": "com.wifisentinel.app-main-80:/xml/file_paths.xml"
+    }
+]
