@@ -72,8 +72,6 @@
 
 ## 👨‍💻 Создатель
 
-**paranoct**
-
 *Разработано с ❤️ и заботой о цифровой безопасности.*
 
 [![GitHub](https://img.shields.io/badge/GitHub-paranoct-181717?style=for-the-badge&logo=github)](https://github.com/paranoct)
