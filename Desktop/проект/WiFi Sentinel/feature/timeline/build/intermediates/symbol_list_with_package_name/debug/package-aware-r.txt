@@ -1,9 +1,0 @@
-com.wifisentinel.feature.timeline
-string timeline_empty
-string timeline_export_json
-string timeline_report_error
-string timeline_severity_critical
-string timeline_severity_high
-string timeline_severity_info
-string timeline_severity_warn
-string timeline_title

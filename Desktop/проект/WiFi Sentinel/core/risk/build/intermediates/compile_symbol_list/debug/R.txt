@@ -1,6 +1,0 @@
-int string risk_action_check_ssid 0x0
-int string risk_action_disconnect_high 0x0
-int string risk_action_no_passwords 0x0
-int string risk_action_use_secure 0x0
-int string risk_summary_empty 0x0
-int string risk_summary_found 0x0

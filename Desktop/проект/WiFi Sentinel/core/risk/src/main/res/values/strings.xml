@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="risk_summary_empty">Пока нет данных по рискам.</string>
-    <string name="risk_summary_found">Найдено: %1$s. Проверьте рекомендации ниже.</string>
-    <string name="risk_action_no_passwords">Не вводите важные пароли в этой сети.</string>
-    <string name="risk_action_check_ssid">Отключите сеть и проверьте имя Wi-Fi перед повторным подключением.</string>
-    <string name="risk_action_use_secure">Переключитесь на более защищённую сеть или на мобильные данные.</string>
-    <string name="risk_action_disconnect_high">Отключитесь, если риск остаётся высоким.</string>
-</resources>
