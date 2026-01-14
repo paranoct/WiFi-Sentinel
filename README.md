@@ -80,6 +80,7 @@ git clone https://github.com/paranoct/WiFi-Sentinel.git
 cd WiFi-Sentinel
 
 # 3. Откройте проект в Android Studio и дождитесь Sync Gradle
+```
 
 👨‍💻 Автор
 
