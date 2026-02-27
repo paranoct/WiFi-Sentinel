@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_always_on_title">Защита в фоне</string>
+    <string name="settings_always_on_description">Приложение продолжит следить за безопасностью Wi-Fi, даже если вы его закрыли.</string>
+    <string name="settings_notifications_title">Предупреждать об угрозах</string>
+    <string name="settings_notifications_description">Показывать уведомления, если сеть стала подозрительной или опасной.</string>
+    <string name="settings_dns_check_title">Проверка подмены DNS</string>
+    <string name="settings_dns_check_description">Рекомендуется оставить включенным: помогает замечать перехват и подмену трафика.</string>
+    <string name="settings_theme_title">Тема</string>
+    <string name="settings_theme_light">Светлая</string>
+    <string name="settings_theme_dark">Темная</string>
+    <string name="settings_mask_sensitive_title">Скрывать названия сетей в отчётах</string>
+    <string name="settings_mask_sensitive_description">Полезно, если вы делитесь отчётом и не хотите показывать SSID/BSSID полностью.</string>
+    <string name="replay_title">Режим демонстрации</string>
+    <string name="replay_subtitle">Позволяет прогнать анализ на сохранённых данных без реальной сети.</string>
+    <string name="replay_mask_toggle">Показывать SSID/BSSID полностью</string>
+    <string name="replay_save_current">Сохранить отчёт по сети</string>
+    <string name="replay_load_file">Загрузить файл</string>
+    <string name="replay_demo_active">Режим демонстрации активен</string>
+    <string name="replay_demo_description">Данные загружены из отчёта. Дашборд показывает сохранённую сеть и риски.</string>
+    <string name="replay_demo_exit">Выключить демо-режим</string>
+
+    <string name="settings_auto_disconnect_title">Авто-отключение при опасности</string>
+    <string name="settings_auto_disconnect_description">Если риск высокий или критический, приложение разорвёт подключение. Для доверенных сетей это не применяется.</string>
+</resources>
+

@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">WiFi Sentinel</string>
+
+    <string name="nav_dashboard">Дашборд</string>
+    <string name="nav_trusted">Доверенные</string>
+    <string name="nav_timeline">Лента</string>
+    <string name="nav_settings">Настройки</string>
+
+    <string name="share_report_title">Поделиться отчётом</string>
+    <string name="report_export_no_data">Нет данных для отчёта.</string>
+    <string name="report_export_error">Не удалось сформировать отчёт.</string>
+
+    <string name="network_hidden">Скрытая сеть</string>
+    <string name="network_unnamed">Безымянная сеть</string>
+    <string name="value_separator"> · </string>
+
+    <string name="notif_action_forget_network">Забыть сеть</string>
+    <string name="notif_action_open_wifi_settings">Открыть Wi-Fi настройки</string>
+    <string name="notif_foreground_title">WiFi Sentinel работает</string>
+    <string name="notif_foreground_text">Фоновая защита активна</string>
+    <string name="notif_channel_alerts_name">Предупреждения Wi-Fi</string>
+    <string name="notif_channel_alerts_desc">Опасные события и риски для Wi-Fi сети.</string>
+    <string name="notif_channel_reports_name">Отчёты по Wi-Fi</string>
+    <string name="notif_channel_reports_desc">Краткие отчёты о подключениях к Wi-Fi.</string>
+    <string name="replay_export_error">Не удалось сохранить данные для демонстрации.</string>
+    <string name="replay_import_success">Данные загружены. Результаты доступны на дашборде.</string>
+    <string name="replay_import_error">Не удалось загрузить файл демонстрации.</string>
+    <string name="replay_demo_exit">Демо режим выключен.</string>
+    <string name="notif_channel_foreground_name">Фоновая защита Wi-Fi</string>
+    <string name="notif_channel_foreground_desc">Постоянное уведомление для фонового мониторинга Wi-Fi.</string>
+    <string name="notif_alert_title">Опасность Wi-Fi</string>
+    <string name="notif_report_title">Отчёт по сети Wi-Fi</string>
+    <string name="notif_network_report_title">Отчёт по сети Wi-Fi</string>
+
+    <string name="event_connected_title">Подключение к Wi-Fi</string>
+    <string name="event_connected_detail">Вы подключились к сети \"%1$s\".</string>
+    <string name="event_bssid_change_title">Смена точки доступа</string>
+    <string name="event_bssid_change_detail">Сеть \"%1$s\" сменила точку доступа. Если это не ожидаемо, проверьте безопасность сети.</string>
+    <string name="event_security_change_title">Изменилась защита сети</string>
+    <string name="event_security_change_detail">Тип защиты сети \"%1$s\" теперь %2$s.</string>
+    <string name="event_captive_portal_title">Сеть требует авторизации</string>
+    <string name="event_captive_portal_detail">Сеть \"%1$s\" требует вход через веб-страницу. Будьте внимательны и проверяйте адрес страницы.</string>
+
+    <string name="security_open">Открытая</string>
+    <string name="security_wep">WEP</string>
+    <string name="security_wpa2">WPA2</string>
+    <string name="security_wpa3">WPA3</string>
+    <string name="security_wpa2_wpa3">WPA2/WPA3</string>
+    <string name="security_unknown">Неизвестно</string>
+
+    <string name="safety_risk_high">Риск: опасно</string>
+    <string name="safety_risk_warn">Риск: есть риски</string>
+    <string name="safety_risk_low">Риск: низкий</string>
+
+    <string name="signal_no_data">сигнал: нет данных</string>
+    <string name="signal_excellent">сигнал: отличный</string>
+    <string name="signal_good">сигнал: хороший</string>
+    <string name="signal_medium">сигнал: средний</string>
+    <string name="signal_weak">сигнал: слабый</string>
+    <string name="signal_very_weak">сигнал: очень слабый</string>
+
+    <string name="finding_detail_captive_portal">Сеть требует веб-аутентификации перед полным доступом. Не вводите важные пароли до проверки адреса страницы.</string>
+    <string name="finding_detail_weak_security">Сеть использует слабую защиту. Лучше перейти на более безопасную сеть.</string>
+    <string name="finding_detail_dns_integrity">Системный DNS ведёт себя нестандартно для нескольких доменов. Проверьте сеть или используйте защищённый DNS.</string>
+    <string name="finding_detail_gateway_anomaly">Шлюз изменился. Проверьте, что это ожидаемое устройство в вашей сети.</string>
+    <string name="finding_detail_disconnect_anomaly">Частые переподключения к сети. Если это не ожидаемо, проверьте стабильность Wi-Fi.</string>
+
+    <string name="toast_network_forgot">Сеть забыта.</string>
+    <string name="toast_forget_open_settings">Откройте сеть в настройках Wi-Fi и нажмите «Забыть».</string>
+    <string name="toast_forget_open_settings_network">Откройте сеть «%1$s» в настройках Wi-Fi и нажмите «Забыть».</string>
+    <string name="toast_autojoin_enable_open_settings">Откройте сеть в настройках Wi-Fi и включите автоподключение.</string>
+    <string name="toast_autojoin_enable_open_settings_network">Откройте сеть «%1$s» в настройках Wi-Fi и включите автоподключение.</string>
+    <string name="notif_auto_disconnect_title">Авто-отключение Wi-Fi</string>
+    <string name="notif_auto_disconnect_message">Подключение к сети "%1$s" автоматически разорвано из-за высокого риска.</string>
+    <string name="notif_auto_disconnect_message_guarded">Подключение к "%1$s" разорвано. Автоподключение к этой сети заблокировано в приложении.</string>
+    <string name="notif_auto_disconnect_message_guarded_system">Подключение к "%1$s" разорвано. Автоподключение заблокировано в приложении и отключено в системе (где доступно).</string>
+    <string name="notif_auto_disconnect_message_manual">Обнаружен высокий риск в сети "%1$s". Система не позволила отключить сеть автоматически, откройте настройки Wi-Fi и отключитесь вручную.</string>
+    <string name="notif_autojoin_blocked_title">Автоподключение заблокировано</string>
+    <string name="notif_autojoin_blocked_message">Подключение к "%1$s" автоматически разорвано, потому что сеть помечена как заблокированная для автоподключения.</string>
+    <string name="notif_autojoin_blocked_message_system">Подключение к "%1$s" разорвано. Автоподключение к этой сети заблокировано в приложении и отключено в системе (где доступно).</string>
+    <string name="notif_autojoin_allowed_title">Блок автоподключения снят</string>
+    <string name="notif_autojoin_allowed_message">Для сети "%1$s" блок автоподключения снят.</string>
+    <string name="event_auto_disconnect_title">Авто-отключение от сети</string>
+    <string name="event_auto_disconnect_detail">Подключение к "%1$s" автоматически отключено из-за высокого риска.</string>
+    <string name="event_autojoin_blocked_title">Блок автоподключения</string>
+    <string name="event_autojoin_blocked_detail">Подключение к "%1$s" автоматически разорвано: сеть находится в блоке автоподключения.</string>
+    <string name="autojoin_no_active_network">Нет активной Wi-Fi сети для изменения автоподключения.</string>
+    <string name="autojoin_block_success">Блокировка автоподключения включена.</string>
+    <string name="autojoin_block_success_system">Блокировка автоподключения включена и применена в системе.</string>
+    <string name="autojoin_unblock_success">Блокировка автоподключения отключена.</string>
+
+    <string name="timeline_network_subtitle_format">%1$s • последнее подключение: %2$s</string>
+    <string name="timeline_change_bssid">Сменился BSSID для той же сети</string>
+    <string name="timeline_change_security">Изменился тип защиты сети</string>
+    <string name="timeline_change_dns">Изменились DNS-серверы</string>
+
+    <string name="timeline_guidance_spoof_why">Так бывает при поддельной точке доступа: сеть выглядит знакомой, но её параметры отличаются.</string>
+    <string name="timeline_guidance_spoof_action">Сверьте название сети и точку доступа в настройках роутера. Если есть сомнение, отключитесь и выберите проверенную сеть.</string>
+    <string name="timeline_guidance_dns_why">Подмена DNS может перенаправлять вас на ложные сайты даже при привычном адресе.</string>
+    <string name="timeline_guidance_dns_action">Не вводите пароли и банковские данные, пока не убедитесь в безопасности сети. Для дома проверьте DNS в роутере.</string>
+    <string name="timeline_guidance_portal_why">Страница авторизации может быть настоящей, но похожие подделки часто используют для кражи данных.</string>
+    <string name="timeline_guidance_portal_action">Проверяйте адрес страницы входа и не используйте один и тот же пароль от важных сервисов.</string>
+    <string name="timeline_guidance_security_why">Слабая защита сети упрощает перехват трафика и подбор доступа.</string>
+    <string name="timeline_guidance_security_action">По возможности используйте сети с WPA2/WPA3. Для своей сети включите WPA2/WPA3 и сложный пароль.</string>
+    <string name="timeline_guidance_high_why">Это серьёзная аномалия сети. На ней выше риск перехвата трафика или подмены точки доступа.</string>
+    <string name="timeline_guidance_high_action">Отключитесь от этой сети и подключитесь снова только после проверки источника сети.</string>
+    <string name="timeline_guidance_warn_why">Есть подозрительные признаки. Это не всегда атака, но стоит проверить сеть внимательнее.</string>
+    <string name="timeline_guidance_warn_action">Соблюдайте осторожность: не передавайте чувствительные данные, пока не подтвердите, что сеть доверенная.</string>
+</resources>
+

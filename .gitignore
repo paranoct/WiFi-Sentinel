@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE / Editors
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.hprof
+
+# Gradle / Build
+.gradle/
+local.properties
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.class
+*.log
+
+# Android artifacts
+*.apk
+*.ap_
+*.aab
+*.aar
+output.json
+
+# Signing keys / secrets
+*.jks
+*.keystore
+*.p12
+*.pem
+keystore/

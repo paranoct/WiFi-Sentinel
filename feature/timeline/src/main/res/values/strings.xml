@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="timeline_title">Лента безопасности</string>
+    <string name="timeline_subtitle">История сетей, сессии подключений и найденные угрозы.</string>
+    <string name="timeline_search_label">Поиск сети</string>
+    <string name="timeline_search_placeholder">Название сети или тип защиты</string>
+    <string name="timeline_filters_title">Фильтры</string>
+    <string name="timeline_filter_critical">Высокий риск</string>
+    <string name="timeline_filter_current">Текущая сеть</string>
+    <string name="timeline_filter_changes">Есть новые изменения</string>
+    <string name="timeline_networks_title">Сети в истории</string>
+    <string name="timeline_network_card_sessions_format">Сессий: %1$d</string>
+    <string name="timeline_network_card_findings_format">Находок: %1$d</string>
+    <string name="timeline_selected_title">Детали выбранной сети</string>
+    <string name="timeline_selected_empty">Выберите сеть выше, чтобы посмотреть сессии и найденные угрозы.</string>
+    <string name="timeline_download_report">Скачать отчёт</string>
+    <string name="timeline_back_to_list">Снять выбор</string>
+    <string name="timeline_clear_history">Очистить историю сети</string>
+    <string name="timeline_clear_history_confirm_title">Удалить историю?</string>
+    <string name="timeline_clear_history_confirm_message">Все сохранённые сессии, события и находки для сети «%1$s» будут удалены без возможности восстановления. История сети также используется при оценке угроз и итогового вердикта безопасности.</string>
+    <string name="timeline_clear_history_confirm">Удалить</string>
+    <string name="timeline_clear_history_cancel">Отмена</string>
+    <string name="timeline_sessions_title">Сессии подключений</string>
+    <string name="timeline_session_period_format">%1$s - %2$s</string>
+    <string name="timeline_session_changes_title">Подозрительные изменения</string>
+    <string name="timeline_session_events_title">Что происходило</string>
+    <string name="timeline_session_findings_title">Что найдено</string>
+    <string name="timeline_finding_why_title">Почему это важно</string>
+    <string name="timeline_finding_action_title">Что сделать сейчас</string>
+    <string name="timeline_no_findings">В этой сессии угроз не найдено.</string>
+    <string name="timeline_no_events">Событий по этой сессии не зафиксировано.</string>
+    <string name="timeline_empty">История пока пустая. Подключитесь к Wi-Fi, чтобы начать анализ.</string>
+    <string name="timeline_severity_info">Низкая угроза</string>
+    <string name="timeline_severity_warn">Средняя угроза</string>
+    <string name="timeline_severity_high">Высокая угроза</string>
+    <string name="timeline_severity_critical">Критическая угроза</string>
+</resources>
