@@ -14,12 +14,12 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    @Inject lateinit var settingsRepository: SettingsRepository
+    @Inject lateinit var repoNastroek: SettingsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val settings = settingsRepository.settings.collectAsStateWithLifecycle(
+            val nastroiki = repoNastroek.settings.collectAsStateWithLifecycle(
                 initialValue = AppSettings(
                     dohProviderId = "google",
                     dnsCheckEnabled = true,
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     manualAutoJoinBlockedNetworkHints = emptySet()
                 )
             ).value
-            WiFiSentinelTheme(darkTheme = settings.themeMode == ThemeMode.DARK) {
+            WiFiSentinelTheme(darkTheme = nastroiki.themeMode == ThemeMode.DARK) {
                 AppRoot()
             }
         }

@@ -34,3 +34,8 @@ output.json
 *.p12
 *.pem
 keystore/
+
+# Repo extras not needed to build Android debug
+source/
+WiFi-Sentinel-Desktop/
+AGENTS.md

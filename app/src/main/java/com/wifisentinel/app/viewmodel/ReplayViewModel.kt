@@ -21,64 +21,64 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ReplayViewModel @Inject constructor(
-    private val replayManager: ReplayManager,
-    private val settingsRepository: SettingsRepository,
-    private val reportExporter: ReportExporter
+    private val menedzherReplay: ReplayManager,
+    private val repoNastroek: SettingsRepository,
+    private val eksporterOtcheta: ReportExporter
 ) : ViewModel() {
-    private val running = MutableStateFlow(false)
+    private val idetObrabotka = MutableStateFlow(false)
 
     val uiState: StateFlow<ReplayUiState> = combine(
-        settingsRepository.settings,
-        running
-    ) { settings, isRunning ->
+        repoNastroek.settings,
+        idetObrabotka
+    ) { nastroiki, seychasObrabatyvaetsya ->
         ReplayUiState(
-            maskSensitive = settings.maskSensitive,
-            isRunning = isRunning,
-            demoModeEnabled = settings.demoModeEnabled
+            maskSensitive = nastroiki.maskSensitive,
+            isRunning = seychasObrabatyvaetsya,
+            demoModeEnabled = nastroiki.demoModeEnabled
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ReplayUiState())
 
-    private val _events = MutableSharedFlow<ReplayEvent>()
-    val events = _events.asSharedFlow()
+    private val _sobytiya = MutableSharedFlow<ReplayEvent>()
+    val events = _sobytiya.asSharedFlow()
 
     fun setMaskSensitive(enabled: Boolean) {
-        viewModelScope.launch { settingsRepository.setMaskSensitive(enabled) }
+        viewModelScope.launch { repoNastroek.setMaskSensitive(enabled) }
     }
 
     fun exportCurrent() {
         viewModelScope.launch {
-            running.value = true
+            idetObrabotka.value = true
             try {
-                val uri = reportExporter.exportCurrentNetwork(uiState.value.maskSensitive)
-                _events.emit(ReplayEvent.Share(uri))
+                val uriFayla = eksporterOtcheta.exportCurrentNetwork(uiState.value.maskSensitive)
+                _sobytiya.emit(ReplayEvent.Share(uriFayla))
             } catch (_: Exception) {
-                _events.emit(ReplayEvent.Error(R.string.replay_export_error))
+                _sobytiya.emit(ReplayEvent.Error(R.string.replay_export_error))
             } finally {
-                running.value = false
+                idetObrabotka.value = false
             }
         }
     }
 
     fun importFromUri(uri: Uri) {
         viewModelScope.launch {
-            running.value = true
+            idetObrabotka.value = true
             try {
-                val ok = replayManager.runFromUri(uri)
-                if (ok) {
-                    _events.emit(ReplayEvent.Message(R.string.replay_import_success))
+                val uspeshno = menedzherReplay.runFromUri(uri)
+                if (uspeshno) {
+                    _sobytiya.emit(ReplayEvent.Message(R.string.replay_import_success))
                 } else {
-                    _events.emit(ReplayEvent.Error(R.string.replay_import_error))
+                    _sobytiya.emit(ReplayEvent.Error(R.string.replay_import_error))
                 }
             } finally {
-                running.value = false
+                idetObrabotka.value = false
             }
         }
     }
 
     fun exitDemoMode() {
         viewModelScope.launch {
-            settingsRepository.setDemoModeEnabled(false)
-            _events.emit(ReplayEvent.Message(R.string.replay_demo_exit))
+            repoNastroek.setDemoModeEnabled(false)
+            _sobytiya.emit(ReplayEvent.Message(R.string.replay_demo_exit))
         }
     }
 

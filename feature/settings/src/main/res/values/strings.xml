@@ -18,7 +18,7 @@
     <string name="replay_save_current">Сохранить отчёт по сети</string>
     <string name="replay_load_file">Загрузить файл</string>
     <string name="replay_demo_active">Режим демонстрации активен</string>
-    <string name="replay_demo_description">Данные загружены из отчёта. Дашборд показывает сохранённую сеть и риски.</string>
+    <string name="replay_demo_description">Данные загружены из отчёта. Меню показывает сохранённую сеть и риски.</string>
     <string name="replay_demo_exit">Выключить демо-режим</string>
 
     <string name="settings_auto_disconnect_title">Авто-отключение при опасности</string>

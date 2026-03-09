@@ -16,43 +16,43 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    private val settingsRepository: SettingsRepository,
-    private val alwaysOnServiceController: AlwaysOnServiceController
+    private val repoNastroek: SettingsRepository,
+    private val kontrollerAlwaysOnServisa: AlwaysOnServiceController
 ) : ViewModel() {
-    val uiState: StateFlow<SettingsUiState> = settingsRepository.settings
-        .map { settings ->
-            SettingsUiState(settings = settings)
+    val uiState: StateFlow<SettingsUiState> = repoNastroek.settings
+        .map { nastroiki ->
+            SettingsUiState(settings = nastroiki)
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SettingsUiState())
 
     fun setDnsCheckEnabled(enabled: Boolean) {
-        viewModelScope.launch { settingsRepository.setDnsCheckEnabled(enabled) }
+        viewModelScope.launch { repoNastroek.setDnsCheckEnabled(enabled) }
     }
 
     fun setNotificationsEnabled(enabled: Boolean) {
-        viewModelScope.launch { settingsRepository.setNotificationsEnabled(enabled) }
+        viewModelScope.launch { repoNastroek.setNotificationsEnabled(enabled) }
     }
 
     fun setThemeMode(mode: ThemeMode) {
-        viewModelScope.launch { settingsRepository.setThemeMode(mode) }
+        viewModelScope.launch { repoNastroek.setThemeMode(mode) }
     }
 
     fun setAlwaysOnEnabled(enabled: Boolean) {
         viewModelScope.launch {
-            settingsRepository.setAlwaysOnEnabled(enabled)
+            repoNastroek.setAlwaysOnEnabled(enabled)
             if (enabled) {
-                alwaysOnServiceController.start()
+                kontrollerAlwaysOnServisa.start()
             } else {
-                alwaysOnServiceController.stop()
+                kontrollerAlwaysOnServisa.stop()
             }
         }
     }
 
     fun setMaskSensitive(enabled: Boolean) {
-        viewModelScope.launch { settingsRepository.setMaskSensitive(enabled) }
+        viewModelScope.launch { repoNastroek.setMaskSensitive(enabled) }
     }
 
     fun setAutoDisconnectEnabled(enabled: Boolean) {
-        viewModelScope.launch { settingsRepository.setAutoDisconnectEnabled(enabled) }
+        viewModelScope.launch { repoNastroek.setAutoDisconnectEnabled(enabled) }
     }
 }

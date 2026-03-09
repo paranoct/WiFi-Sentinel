@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WiFi Sentinel</string>
 
-    <string name="nav_dashboard">Дашборд</string>
+    <string name="nav_dashboard">Меню</string>
     <string name="nav_trusted">Доверенные</string>
     <string name="nav_timeline">Лента</string>
     <string name="nav_settings">Настройки</string>
@@ -23,17 +23,15 @@
     <string name="notif_channel_reports_name">Отчёты по Wi-Fi</string>
     <string name="notif_channel_reports_desc">Краткие отчёты о подключениях к Wi-Fi.</string>
     <string name="replay_export_error">Не удалось сохранить данные для демонстрации.</string>
-    <string name="replay_import_success">Данные загружены. Результаты доступны на дашборде.</string>
+    <string name="replay_import_success">Данные загружены. Результаты доступны в меню.</string>
     <string name="replay_import_error">Не удалось загрузить файл демонстрации.</string>
     <string name="replay_demo_exit">Демо режим выключен.</string>
     <string name="notif_channel_foreground_name">Фоновая защита Wi-Fi</string>
     <string name="notif_channel_foreground_desc">Постоянное уведомление для фонового мониторинга Wi-Fi.</string>
     <string name="notif_alert_title">Опасность Wi-Fi</string>
-    <string name="notif_report_title">Отчёт по сети Wi-Fi</string>
     <string name="notif_network_report_title">Отчёт по сети Wi-Fi</string>
 
     <string name="event_connected_title">Подключение к Wi-Fi</string>
-    <string name="event_connected_detail">Вы подключились к сети \"%1$s\".</string>
     <string name="event_bssid_change_title">Смена точки доступа</string>
     <string name="event_bssid_change_detail">Сеть \"%1$s\" сменила точку доступа. Если это не ожидаемо, проверьте безопасность сети.</string>
     <string name="event_security_change_title">Изменилась защита сети</string>
@@ -87,7 +85,6 @@
     <string name="autojoin_no_active_network">Нет активной Wi-Fi сети для изменения автоподключения.</string>
     <string name="autojoin_block_success">Блокировка автоподключения включена.</string>
     <string name="autojoin_block_success_system">Блокировка автоподключения включена и применена в системе.</string>
-    <string name="autojoin_unblock_success">Блокировка автоподключения отключена.</string>
 
     <string name="timeline_network_subtitle_format">%1$s • последнее подключение: %2$s</string>
     <string name="timeline_change_bssid">Сменился BSSID для той же сети</string>

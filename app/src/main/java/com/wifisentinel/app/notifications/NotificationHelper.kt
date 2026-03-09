@@ -3,7 +3,6 @@ package com.wifisentinel.app.notifications
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.wifisentinel.app.R
@@ -154,7 +153,6 @@ class NotificationHelper @Inject constructor(
     }
 
     private fun ensureAlertChannel() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
         val channel = NotificationChannel(
             CHANNEL_ID,
             context.getString(R.string.notif_channel_alerts_name),
@@ -167,7 +165,6 @@ class NotificationHelper @Inject constructor(
     }
 
     private fun ensureReportChannel() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
         val channel = NotificationChannel(
             REPORT_CHANNEL_ID,
             context.getString(R.string.notif_channel_reports_name),
@@ -180,7 +177,6 @@ class NotificationHelper @Inject constructor(
     }
 
     private fun ensureForegroundChannel() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
         val channel = NotificationChannel(
             FOREGROUND_CHANNEL_ID,
             context.getString(R.string.notif_channel_foreground_name),
@@ -229,10 +225,7 @@ class NotificationHelper @Inject constructor(
     }
 
     private fun pendingIntentFlags(): Int {
-        var flags = android.app.PendingIntent.FLAG_UPDATE_CURRENT
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            flags = flags or android.app.PendingIntent.FLAG_IMMUTABLE
-        }
-        return flags
+        return android.app.PendingIntent.FLAG_UPDATE_CURRENT or
+            android.app.PendingIntent.FLAG_IMMUTABLE
     }
 }

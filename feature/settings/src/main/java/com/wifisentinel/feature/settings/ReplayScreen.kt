@@ -28,12 +28,12 @@ fun ReplayScreen(
     onLoadFile: () -> Unit,
     onExitDemo: () -> Unit
 ) {
-    val scrollState = rememberScrollState()
-    val buttonShape = RoundedCornerShape(APP_BUTTON_RADIUS)
+    val sostoyanieProkrutki = rememberScrollState()
+    val formaKnopki = RoundedCornerShape(APP_BUTTON_RADIUS)
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(scrollState)
+            .verticalScroll(sostoyanieProkrutki)
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -60,7 +60,7 @@ fun ReplayScreen(
                         onClick = onExitDemo,
                         enabled = !state.isRunning,
                         modifier = Modifier.fillMaxWidth(),
-                        shape = buttonShape
+                        shape = formaKnopki
                     ) {
                         Text(text = stringResource(R.string.replay_demo_exit))
                     }
@@ -74,7 +74,7 @@ fun ReplayScreen(
                     onClick = onLoadFile,
                     enabled = !state.isRunning,
                     modifier = Modifier.fillMaxWidth(),
-                    shape = buttonShape
+                    shape = formaKnopki
                 ) {
                     Text(text = stringResource(R.string.replay_load_file))
                 }

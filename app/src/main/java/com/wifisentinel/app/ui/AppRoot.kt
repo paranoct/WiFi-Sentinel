@@ -56,33 +56,33 @@ import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun AppRoot() {
-    val context = LocalContext.current
-    val requiredPermissions = remember { WifiPermissions.requiredPermissions() }
-    var permissionsGranted by remember {
-        mutableStateOf(WifiPermissions.hasRequiredPermissions(context))
+    val kontekst = LocalContext.current
+    val obyazatelnyeRazresheniya = remember { WifiPermissions.requiredPermissions() }
+    var razresheniyaVydany by remember {
+        mutableStateOf(WifiPermissions.hasRequiredPermissions(kontekst))
     }
-    val notificationPermissions = remember { NotificationPermissions.requiredPermissions() }
-    var notificationsGranted by remember {
-        mutableStateOf(NotificationPermissions.hasRequiredPermissions(context))
+    val razresheniyaUvedomleniy = remember { NotificationPermissions.requiredPermissions() }
+    var uvedomleniyaRazresheny by remember {
+        mutableStateOf(NotificationPermissions.hasRequiredPermissions(kontekst))
     }
-    var notificationRequested by remember { mutableStateOf(false) }
-    val permissionLauncher = rememberLauncherForActivityResult(
+    var zaprosUvedomleniyUzheByl by remember { mutableStateOf(false) }
+    val launcherRazresheniy = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) {
-        permissionsGranted = WifiPermissions.hasRequiredPermissions(context)
+        razresheniyaVydany = WifiPermissions.hasRequiredPermissions(kontekst)
     }
-    val notificationPermissionLauncher = rememberLauncherForActivityResult(
+    val launcherRazresheniyUvedomleniy = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) {
-        notificationsGranted = NotificationPermissions.hasRequiredPermissions(context)
+        uvedomleniyaRazresheny = NotificationPermissions.hasRequiredPermissions(kontekst)
     }
 
-    val navController = rememberNavController()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route?.substringBefore("?")
-    var lastNavClickMs by remember { mutableStateOf(0L) }
+    val navKontroller = rememberNavController()
+    val zapisStekaNavigatsii by navKontroller.currentBackStackEntryAsState()
+    val tekushiyMarshrut = zapisStekaNavigatsii?.destination?.route?.substringBefore("?")
+    var vremyaPoslednegoKlikaMs by remember { mutableStateOf(0L) }
 
-    val navItems = listOf(
+    val punktyNavigatsii = listOf(
         NavItem(AppRoutes.Dashboard, R.string.nav_dashboard, Icons.Filled.Home),
         NavItem(AppRoutes.Trusted, R.string.nav_trusted, Icons.Filled.Info),
         NavItem(AppRoutes.Timeline, R.string.nav_timeline, Icons.AutoMirrored.Filled.List),
@@ -92,25 +92,25 @@ fun AppRoot() {
     Scaffold(
         bottomBar = {
             NavigationBar {
-                navItems.forEach { item ->
-                    val selected = currentRoute == item.route
+                punktyNavigatsii.forEach { punkt ->
+                    val vybran = tekushiyMarshrut == punkt.route
                     NavigationBarItem(
-                        selected = selected,
+                        selected = vybran,
                         onClick = {
-                            val now = SystemClock.elapsedRealtime()
-                            if (now - lastNavClickMs < NAV_CLICK_DEBOUNCE_MS) return@NavigationBarItem
-                            lastNavClickMs = now
-                            navigateToTopLevelFresh(navController, item.route)
+                            val seychas = SystemClock.elapsedRealtime()
+                            if (seychas - vremyaPoslednegoKlikaMs < NAV_CLICK_DEBOUNCE_MS) return@NavigationBarItem
+                            vremyaPoslednegoKlikaMs = seychas
+                            navigateToTopLevelFresh(navKontroller, punkt.route)
                         },
-                        icon = { androidx.compose.material3.Icon(item.icon, contentDescription = stringResource(item.labelResId)) },
-                        label = { androidx.compose.material3.Text(stringResource(item.labelResId)) }
+                        icon = { androidx.compose.material3.Icon(punkt.icon, contentDescription = stringResource(punkt.labelResId)) },
+                        label = { androidx.compose.material3.Text(stringResource(punkt.labelResId)) }
                     )
                 }
             }
         }
     ) { innerPadding ->
         NavHost(
-            navController = navController,
+            navController = navKontroller,
             startDestination = AppRoutes.Dashboard,
             modifier = Modifier.padding(innerPadding)
         ) {
@@ -118,31 +118,31 @@ fun AppRoot() {
                 val viewModel: DashboardViewModel = hiltViewModel()
                 val replayViewModel: ReplayViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                val importLauncher = rememberLauncherForActivityResult(
+                val launcherImporta = rememberLauncherForActivityResult(
                     ActivityResultContracts.OpenDocument()
-                ) { uri ->
-                    if (uri != null) {
-                        replayViewModel.importFromUri(uri)
+                ) { uriFayla ->
+                    if (uriFayla != null) {
+                        replayViewModel.importFromUri(uriFayla)
                     }
                 }
                 LaunchedEffect(viewModel) {
-                    viewModel.reportEvents.collectLatest { event ->
-                        when (event) {
-                            is DashboardViewModel.ReportEvent.Share -> shareReports(context, listOf(event.uri))
+                    viewModel.reportEvents.collectLatest { sobytie ->
+                        when (sobytie) {
+                            is DashboardViewModel.ReportEvent.Share -> shareReports(kontekst, listOf(sobytie.uri))
                             is DashboardViewModel.ReportEvent.Message -> {
                                 Toast.makeText(
-                                    context,
-                                    context.getString(event.messageResId),
+                                    kontekst,
+                                    kontekst.getString(sobytie.messageResId),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
                             is DashboardViewModel.ReportEvent.OpenWifiSettings -> {
-                                openWifiSettings(context, event.ssid, event.action)
+                                openWifiSettings(kontekst, sobytie.ssid, sobytie.action)
                             }
                             is DashboardViewModel.ReportEvent.Error -> {
                                 Toast.makeText(
-                                    context,
-                                    context.getString(event.messageResId),
+                                    kontekst,
+                                    kontekst.getString(sobytie.messageResId),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
@@ -150,43 +150,43 @@ fun AppRoot() {
                     }
                 }
                 LaunchedEffect(replayViewModel) {
-                    replayViewModel.events.collectLatest { event ->
-                        when (event) {
-                            is ReplayViewModel.ReplayEvent.Share -> shareReports(context, listOf(event.uri))
+                    replayViewModel.events.collectLatest { sobytie ->
+                        when (sobytie) {
+                            is ReplayViewModel.ReplayEvent.Share -> shareReports(kontekst, listOf(sobytie.uri))
                             is ReplayViewModel.ReplayEvent.Message -> {
                                 Toast.makeText(
-                                    context,
-                                    context.getString(event.messageResId),
+                                    kontekst,
+                                    kontekst.getString(sobytie.messageResId),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
                             is ReplayViewModel.ReplayEvent.Error -> {
                                 Toast.makeText(
-                                    context,
-                                    context.getString(event.messageResId),
+                                    kontekst,
+                                    kontekst.getString(sobytie.messageResId),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
                         }
                     }
                 }
-                LaunchedEffect(permissionsGranted) {
-                    if (permissionsGranted) {
+                LaunchedEffect(razresheniyaVydany) {
+                    if (razresheniyaVydany) {
                         viewModel.refreshSnapshot()
                     }
                 }
-                LaunchedEffect(notificationPermissions) {
-                    if (!notificationRequested && !notificationsGranted && notificationPermissions.isNotEmpty()) {
-                        notificationRequested = true
-                        notificationPermissionLauncher.launch(notificationPermissions.toTypedArray())
+                LaunchedEffect(razresheniyaUvedomleniy) {
+                    if (!zaprosUvedomleniyUzheByl && !uvedomleniyaRazresheny && razresheniyaUvedomleniy.isNotEmpty()) {
+                        zaprosUvedomleniyUzheByl = true
+                        launcherRazresheniyUvedomleniy.launch(razresheniyaUvedomleniy.toTypedArray())
                     }
                 }
                 DashboardScreen(
                     state = uiState,
-                    onOpenDetails = { navController.navigate(AppRoutes.NetworkDetails) },
+                    onOpenDetails = { navKontroller.navigate(AppRoutes.NetworkDetails) },
                     onAddTrusted = {
-                        navController.navigate(AppRoutes.trustedRoute(openAddCurrent = true)) {
-                            popUpTo(navController.graph.findStartDestination().id) {
+                        navKontroller.navigate(AppRoutes.trustedRoute(openAddCurrent = true)) {
+                            popUpTo(navKontroller.graph.findStartDestination().id) {
                                 inclusive = false
                                 saveState = false
                             }
@@ -198,15 +198,15 @@ fun AppRoot() {
                     onScanNow = { viewModel.scanNow() },
                     onShareReport = { viewModel.exportCurrentNetworkReport() },
                     onExitDemo = { viewModel.exitDemoMode() },
-                    onLoadReplay = { importLauncher.launch(arrayOf("application/json")) },
-                    permissionsMissing = !permissionsGranted,
-                    onRequestPermissions = { permissionLauncher.launch(requiredPermissions.toTypedArray()) }
+                    onLoadReplay = { launcherImporta.launch(arrayOf("application/json")) },
+                    permissionsMissing = !razresheniyaVydany,
+                    onRequestPermissions = { launcherRazresheniy.launch(obyazatelnyeRazresheniya.toTypedArray()) }
                 )
             }
             composable(AppRoutes.NetworkDetails) {
                 val viewModel: NetworkDetailsViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                NetworkDetailsScreen(state = uiState, onBack = { navController.popBackStack() })
+                NetworkDetailsScreen(state = uiState, onBack = { navKontroller.popBackStack() })
             }
             composable(
                 route = AppRoutes.TrustedRoutePattern,
@@ -216,14 +216,14 @@ fun AppRoot() {
                         defaultValue = false
                     }
                 )
-            ) { backStackEntry ->
+            ) { zapisSteka ->
                 val viewModel: TrustedNetworksViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                val openAddCurrent = backStackEntry.arguments
+                val nadoOtkrytDobavlenieTekushchey = zapisSteka.arguments
                     ?.getBoolean(AppRoutes.TrustedOpenAddCurrentArg)
                     ?: false
-                LaunchedEffect(openAddCurrent) {
-                    if (openAddCurrent) {
+                LaunchedEffect(nadoOtkrytDobavlenieTekushchey) {
+                    if (nadoOtkrytDobavlenieTekushchey) {
                         viewModel.requestAddCurrent()
                     }
                 }
@@ -247,15 +247,15 @@ fun AppRoot() {
                 val viewModel: TimelineViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 LaunchedEffect(viewModel) {
-                    viewModel.reportEvents.collectLatest { event ->
-                        when (event) {
+                    viewModel.reportEvents.collectLatest { sobytie ->
+                        when (sobytie) {
                             is TimelineViewModel.ReportEvent.Share -> {
-                                shareReports(context, event.uris)
+                                shareReports(kontekst, sobytie.uris)
                             }
                             is TimelineViewModel.ReportEvent.Error -> {
                                 Toast.makeText(
-                                    context,
-                                    context.getString(event.messageResId),
+                                    kontekst,
+                                    kontekst.getString(sobytie.messageResId),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
@@ -278,13 +278,13 @@ fun AppRoot() {
                 SettingsScreen(
                     state = uiState,
                     onToggleNotifications = { enabled ->
-                        if (enabled && !notificationsGranted && notificationPermissions.isNotEmpty()) {
-                            notificationPermissionLauncher.launch(notificationPermissions.toTypedArray())
+                        if (enabled && !uvedomleniyaRazresheny && razresheniyaUvedomleniy.isNotEmpty()) {
+                            launcherRazresheniyUvedomleniy.launch(razresheniyaUvedomleniy.toTypedArray())
                         }
                         viewModel.setNotificationsEnabled(enabled)
                     },
                     onToggleDnsCheck = { enabled -> viewModel.setDnsCheckEnabled(enabled) },
-                    onOpenReplay = { navController.navigate(AppRoutes.Replay) },
+                    onOpenReplay = { navKontroller.navigate(AppRoutes.Replay) },
                     onThemeChange = { viewModel.setThemeMode(it) },
                     onToggleMaskSensitive = { enabled -> viewModel.setMaskSensitive(enabled) },
                     onToggleAutoDisconnect = { enabled -> viewModel.setAutoDisconnectEnabled(enabled) }
@@ -293,28 +293,28 @@ fun AppRoot() {
             composable(AppRoutes.Replay) {
                 val viewModel: ReplayViewModel = hiltViewModel()
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                val importLauncher = rememberLauncherForActivityResult(
+                val launcherImporta = rememberLauncherForActivityResult(
                     ActivityResultContracts.OpenDocument()
-                ) { uri ->
-                    if (uri != null) {
-                        viewModel.importFromUri(uri)
+                ) { uriFayla ->
+                    if (uriFayla != null) {
+                        viewModel.importFromUri(uriFayla)
                     }
                 }
                 LaunchedEffect(viewModel) {
-                    viewModel.events.collectLatest { event ->
-                        when (event) {
-                            is ReplayViewModel.ReplayEvent.Share -> shareReports(context, listOf(event.uri))
+                    viewModel.events.collectLatest { sobytie ->
+                        when (sobytie) {
+                            is ReplayViewModel.ReplayEvent.Share -> shareReports(kontekst, listOf(sobytie.uri))
                             is ReplayViewModel.ReplayEvent.Message -> {
                                 Toast.makeText(
-                                    context,
-                                    context.getString(event.messageResId),
+                                    kontekst,
+                                    kontekst.getString(sobytie.messageResId),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
                             is ReplayViewModel.ReplayEvent.Error -> {
                                 Toast.makeText(
-                                    context,
-                                    context.getString(event.messageResId),
+                                    kontekst,
+                                    kontekst.getString(sobytie.messageResId),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
@@ -324,7 +324,7 @@ fun AppRoot() {
                 ReplayScreen(
                     state = uiState,
                     onToggleMaskSensitive = { enabled -> viewModel.setMaskSensitive(enabled) },
-                    onLoadFile = { importLauncher.launch(arrayOf("application/json")) },
+                    onLoadFile = { launcherImporta.launch(arrayOf("application/json")) },
                     onExitDemo = { viewModel.exitDemoMode() }
                 )
             }
@@ -341,14 +341,14 @@ private data class NavItem(
 private const val NAV_CLICK_DEBOUNCE_MS = 100L
 
 private fun navigateToTopLevelFresh(
-    navController: NavHostController,
-    route: String
+    navKontroller: NavHostController,
+    marshrut: String
 ) {
-    val startRoute = navController.graph.findStartDestination().route
-    val inclusivePop = route == startRoute
-    navController.navigate(route) {
-        popUpTo(navController.graph.findStartDestination().id) {
-            inclusive = inclusivePop
+    val startoviyMarshrut = navKontroller.graph.findStartDestination().route
+    val nuzhenInclusivePop = marshrut == startoviyMarshrut
+    navKontroller.navigate(marshrut) {
+        popUpTo(navKontroller.graph.findStartDestination().id) {
+            inclusive = nuzhenInclusivePop
             saveState = false
         }
         restoreState = false
@@ -356,56 +356,56 @@ private fun navigateToTopLevelFresh(
     }
 }
 
-private fun shareReports(context: Context, uris: List<Uri>) {
-    if (uris.isEmpty()) return
-    val shareClipData = ClipData.newUri(context.contentResolver, "WiFi Sentinel Report", uris.first())
-    uris.drop(1).forEach { uri ->
-        shareClipData.addItem(ClipData.Item(uri))
+private fun shareReports(kontekst: Context, uriSpisok: List<Uri>) {
+    if (uriSpisok.isEmpty()) return
+    val dannyeDlyaShara = ClipData.newUri(kontekst.contentResolver, "WiFi Sentinel Report", uriSpisok.first())
+    uriSpisok.drop(1).forEach { uri ->
+        dannyeDlyaShara.addItem(ClipData.Item(uri))
     }
 
-    val intent = if (uris.size == 1) {
+    val intentSharenga = if (uriSpisok.size == 1) {
         Intent(Intent.ACTION_SEND).apply {
-            val uri = uris.first()
-            type = context.contentResolver.getType(uri) ?: "application/octet-stream"
+            val uri = uriSpisok.first()
+            type = kontekst.contentResolver.getType(uri) ?: "application/octet-stream"
             putExtra(Intent.EXTRA_STREAM, uri)
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            clipData = shareClipData
+            clipData = dannyeDlyaShara
         }
     } else {
         Intent(Intent.ACTION_SEND_MULTIPLE).apply {
             type = "*/*"
-            putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(uris))
+            putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(uriSpisok))
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            clipData = shareClipData
+            clipData = dannyeDlyaShara
         }
     }
-    context.startActivity(Intent.createChooser(intent, context.getString(R.string.share_report_title)))
+    kontekst.startActivity(Intent.createChooser(intentSharenga, kontekst.getString(R.string.share_report_title)))
 }
 
 private fun openWifiSettings(
-    context: Context,
+    kontekst: Context,
     ssid: String?,
-    action: DashboardViewModel.ReportEvent.WifiSettingsAction
+    deystvie: DashboardViewModel.ReportEvent.WifiSettingsAction
 ) {
-    val settingsIntent = Intent(Settings.ACTION_WIFI_SETTINGS).apply {
+    val intentNastroek = Intent(Settings.ACTION_WIFI_SETTINGS).apply {
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     }
-    context.startActivity(settingsIntent)
-    val message = when (action) {
+    kontekst.startActivity(intentNastroek)
+    val soobshenie = when (deystvie) {
         DashboardViewModel.ReportEvent.WifiSettingsAction.FORGET_NETWORK -> {
             if (ssid.isNullOrBlank()) {
-                context.getString(R.string.toast_forget_open_settings)
+                kontekst.getString(R.string.toast_forget_open_settings)
             } else {
-                context.getString(R.string.toast_forget_open_settings_network, ssid)
+                kontekst.getString(R.string.toast_forget_open_settings_network, ssid)
             }
         }
         DashboardViewModel.ReportEvent.WifiSettingsAction.ENABLE_AUTOJOIN -> {
             if (ssid.isNullOrBlank()) {
-                context.getString(R.string.toast_autojoin_enable_open_settings)
+                kontekst.getString(R.string.toast_autojoin_enable_open_settings)
             } else {
-                context.getString(R.string.toast_autojoin_enable_open_settings_network, ssid)
+                kontekst.getString(R.string.toast_autojoin_enable_open_settings_network, ssid)
             }
         }
     }
-    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    Toast.makeText(kontekst, soobshenie, Toast.LENGTH_LONG).show()
 }
