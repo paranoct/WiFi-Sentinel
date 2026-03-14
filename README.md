@@ -3,7 +3,6 @@
 [![Platform](https://img.shields.io/badge/platform-Android-3DDC84)](https://www.android.com/)
 [![Language](https://img.shields.io/badge/language-Kotlin-7F52FF)](https://kotlinlang.org/)
 [![Min SDK](https://img.shields.io/badge/minSdk-26-0A66C2)](https://developer.android.com/)
-[![License](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 
 Language: [Russian](#russian) | [English](#english)
 
